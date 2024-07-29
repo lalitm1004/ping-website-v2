@@ -51,7 +51,7 @@
         {/if}
     </nav>
 {:else}
-    <nav class={`fixed h-[60px] top-2 left-1/2 -translate-x-1/2 flex justify-between items-center gap-4 bg-neutral-950/95 px-4 rounded-3xl z-40`}>
+    <nav class={`fixed h-[60px] top-4 left-1/2 -translate-x-1/2 flex justify-between items-center gap-4 bg-neutral-950/95 px-4 rounded-3xl z-40`}>
         <a class={`jetbrains-regular h-[50px] -translate-y-[0.2rem] text-5xl bg-gradient-to-r from-ping-orange-primary to-ping-red bg-clip-text text-transparent`} href="/">@</a>
         
         

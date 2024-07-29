@@ -155,19 +155,16 @@ export type Database = {
           id: number
           is_active: boolean | null
           is_monsoon: boolean | null
-          year: number | null
         }
         Insert: {
           id?: number
           is_active?: boolean | null
           is_monsoon?: boolean | null
-          year?: number | null
         }
         Update: {
           id?: number
           is_active?: boolean | null
           is_monsoon?: boolean | null
-          year?: number | null
         }
         Relationships: []
       }

@@ -104,30 +104,29 @@
         <div class={`absolute top-0 left-0 h-screen w-screen bg-neutral-900/60 grid place-items-center z-50`}>
             <div transition:slide class={`jetbrains-regular bg-neutral-950 flex flex-col px-6 py-6 rounded-xl`}>
                 <div class={`flex flex-col`}>
-                    <p class={`text-5xl`}>@ping --onboarding</p>
-                    <p class={`text-neutral-500 mt-1`}>Almost there!</p>
+                    <p class={`text-2xl md:text-5xl`}>@ping --onboarding</p>
+                    <p class={`text-neutral-500 mt-1 md:text-md text-sm`}>Almost there!</p>
                 </div>
 
-                <div class={`flex flex-col gap-4 text-lg mt-4`}>
+                <div class={`flex flex-col gap-4 text-lg mt-4 md:mx-0 mx-2`}>
                     <div class={`flex flex-row items-center gap-2`}>
-                        <p class={`w-[165px]`}>
+                        <p class={`md:w-[165ps] w-[130px] md:text-md text-sm`}>
                             --roll-number
                             {#if (validRollNumber === false)}
                                 <span class={`text-red-600`}>*</span>
                             {/if}
                         </p>
-                        <input bind:value={inputRollNumber} class={`w-[300px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}/>
+                        <input bind:value={inputRollNumber} class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}/>
                     </div>
 
                     <div class={`flex flex-row items-center gap-2`}>
-                        <p class={`w-[165px]`}>
+                        <p class={`md:w-[165ps] w-[130px] md:text-md text-sm`}>
                             --major
                             {#if (validMajor === false)}
                                 <span class={`text-red-600`}>*</span>
                             {/if}
                         </p>
-                        <!-- <input placeholder={`Enter your roll number`} /> -->
-                        <select bind:value={inputMajor} class={`w-[300px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}>
+                        <select bind:value={inputMajor} class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}>
                             {#each majors as major (major.key)}
                                 <option value={major.name}>{major.name}</option>
                             {/each}
@@ -135,45 +134,41 @@
                     </div>
 
                     <div class={`flex flex-row items-center gap-2`}>
-                        <p class={`w-[165px]`}>
+                        <p class={`md:w-[165ps] w-[130px] md:text-md text-sm`}>
                             --batch
                             {#if (validBatch === false)}
                                 <span class={`text-red-600`}>*</span>
                             {/if}
                         </p>
-                        <select bind:value={inputBatch} class={`w-[300px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}>
+                        <select bind:value={inputBatch} class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}>
                             {#each batches as batch (batch.key)}
                                 <option value={batch.key}>{batch.name}</option>
                             {/each}
                         </select>
                     </div>
-
                 </div>
 
                 <div class={`grid place-items-center mt-5`}>
-
                     <button on:click={postUserData} class={`w-fit bg-gradient-to-r from-ping-pink to-ping-orange-primary py-[1px] px-[1px] rounded-2xl`}>
                         <p class={`ubuntu-bol/d jetbrains-regular text-xl bg-neutral-950 hover:bg-neutral-900 active:bg-neutral-900/95 px-3 py-2 rounded-2xl`}>
                             Submit
                         </p>
                     </button>
-
                 </div>
-
             </div>
         </div>
     {/if}
-    
+
     <!-- Main content -->
     <div class={`min-h-screen min-w-screen`}>
-        
+        main
     </div>
 
     <!-- Test button -->
     <button on:click={handleSignOut} class={`absolute top-0 right-0 z-50`}>signout</button>
+    <!-- <button on:click={() => onboard = !onboard} class={`absolute bottom-4 right-0 z-50`}>onboard</button> -->
 {:else}
     <div class={`min-h-screen min-w-screen flex flex-col justify-center items-center`}>
-
         <p class={`ubuntu-bold text-7xl mb-4`}>You up?</p>
 
         <button on:click={handleSignIn} class={`bg-gradient-to-r from-ping-pink to-ping-orange-primary py-[1px] px-[1.5px] rounded-2xl`}>
@@ -181,6 +176,7 @@
                 Sign in
             </p>
         </button>
+
         <p class={`text-md text-neutral-500`}>using your SNU email</p>
     </div>
 {/if}
