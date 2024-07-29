@@ -14,11 +14,10 @@ export const GET = async ({ url, locals: { supabase } }) => {
         .select('*')
         .eq('id', userId)
         .single();
-    
+
     if (userError || userData === null) {
         return json({ error: 'User not found' }, { status: 404 })
     }
-
 
     const {
         data: submissionData,
@@ -71,10 +70,10 @@ export const POST = async ({ request, locals: { supabase } }) => {
         .from('user')
         .insert([userObject])
         .select();
-    
+
     if (insertError) {
         return json({ error: insertError.message }, { status: 500 });
     }
-    
+
     return json({ user: insertData[0], submissions: [] }, { status: 201 });
 }

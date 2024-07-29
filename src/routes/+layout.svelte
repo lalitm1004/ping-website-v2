@@ -2,9 +2,11 @@
     // Style imports
     import '../styles/globals.css'
     import '../styles/fonts.css'
-    import Navbar from '$lib/components/Navbar.svelte';
+
     import { onMount } from 'svelte';
     import { invalidate } from '$app/navigation';
+
+    import Navbar from '$lib/components/Navbar.svelte';
     import Footer from '$lib/components/Footer.svelte';
 
     export let data;
