@@ -5,6 +5,7 @@
     import Navbar from '$lib/components/Navbar.svelte';
     import { onMount } from 'svelte';
     import { invalidate } from '$app/navigation';
+    import Footer from '$lib/components/Footer.svelte';
 
     export let data;
     $: ({ session, supabase} = data);
@@ -24,3 +25,5 @@
 
 <Navbar />
 <slot />
+<!-- TODO: -->
+<!-- <Footer /> -->

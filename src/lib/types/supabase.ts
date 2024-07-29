@@ -86,7 +86,7 @@ export type Database = {
           },
         ]
       }
-      submissions: {
+      submission: {
         Row: {
           created_at: string
           hack: string | null
@@ -153,16 +153,19 @@ export type Database = {
       term: {
         Row: {
           id: number
+          is_active: boolean | null
           is_monsoon: boolean | null
           year: number | null
         }
         Insert: {
           id?: number
+          is_active?: boolean | null
           is_monsoon?: boolean | null
           year?: number | null
         }
         Update: {
           id?: number
+          is_active?: boolean | null
           is_monsoon?: boolean | null
           year?: number | null
         }
