@@ -1,6 +1,6 @@
 <svelte:head>
     <title>@ping</title>
-    <meta name="description" content="Have fun building.">
+    <meta name="description" content="build, have fun.">
 </svelte:head>
 
 <script>
