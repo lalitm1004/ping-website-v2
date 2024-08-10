@@ -25,7 +25,7 @@
     })
 </script>
 
-<Navbar />
+<!-- <Navbar /> -->
 <slot />
 <!-- TODO: -->
 <!-- <Footer /> -->

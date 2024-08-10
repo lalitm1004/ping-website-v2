@@ -1,9 +1,10 @@
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from "$env/static/public";
 import { createServerClient } from '@supabase/ssr';
-import type { Handle } from '@sveltejs/kit';
+import { redirect, type Handle } from '@sveltejs/kit';
 import type { Database } from "$lib/types/supabase";
+import { sequence } from "@sveltejs/kit/hooks";
 
-export const handle: Handle = async ({ event, resolve }) => {
+const supabase: Handle = async ({ event, resolve }) => {
     event.locals.supabase = createServerClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
         cookies: {
             getAll() {
@@ -44,3 +45,12 @@ export const handle: Handle = async ({ event, resolve }) => {
         },
     })
 }
+
+const comingSoon: Handle = async ({ event, resolve }) => {
+    if (event.url.pathname !== '/') {
+        redirect(303, '/');0
+    }
+    return resolve(event);
+}
+
+export const handle: Handle = sequence(supabase, comingSoon)

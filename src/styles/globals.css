@@ -9,9 +9,10 @@ html {
 body {
     height: 100dvh;
     background: linear-gradient(
-        207.29deg, 
-        rgba(0, 0, 0, 0) 8.46%,
-        rgba(159, 0, 0, 0.184) 56.22%,
-        rgba(0, 0, 0, 0) 90.6%
+        90deg, 
+        rgba(0, 0, 0, 0) 8%,
+        rgba(159, 0, 0, 0.184) 50%,
+        rgba(159, 0, 0, 0.184) 50%,
+        rgba(0, 0, 0, 0) 92%
     ), #0C0C0C;
 }
