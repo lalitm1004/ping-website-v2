@@ -62,15 +62,18 @@ export const POST = async ({ request, locals: { supabase } }) => {
         major: userData.major,
         batch: userData.batch,
     };
-
+    console.log(userObject)
     const {
         data: insertData,
         error: insertError,
     } = await supabase
-        .from('user')
+        .from('fixuser')
         .insert([userObject])
         .select();
-
+    const newdata = await supabase.from('fixuser').select();
+    console.log(newdata)
+    console.log(insertData, insertError)
+    
     if (insertError) {
         return json({ error: insertError.message }, { status: 500 });
     }

@@ -47,9 +47,9 @@ const supabase: Handle = async ({ event, resolve }) => {
 }
 
 const comingSoon: Handle = async ({ event, resolve }) => {
-    if (event.url.pathname !== '/') {
-        redirect(303, '/');0
-    }
+    // if (event.url.pathname !== '/') {
+    //     redirect(303, '/');0
+    // }
     return resolve(event);
 }
 
