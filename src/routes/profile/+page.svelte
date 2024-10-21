@@ -50,7 +50,6 @@
 
         })
         const json = await response.json();
-
         if (response.status === 200) {
             userData = json;
         } else {

@@ -4,6 +4,8 @@
     import type { Tables } from '$lib/types/supabase'
     import { majors, batches } from '$lib/data/onboardingData';
     import { slide } from 'svelte/transition';
+	import { goto } from '$app/navigation';
+	import {onMount} from "svelte";
 
     export let data;
     $: ({ supabase, user } = data)
@@ -40,6 +42,11 @@
 
         if (response.status === 200) {
             userData = json;
+			console.log(userData?.user);
+			inputRollNumber = userData?.user.roll_number || '';
+			inputBatch = userData?.user.batch || 0;
+			inputMajor = userData?.user.major || '';
+
         } else {
             userData = null;
             
@@ -66,6 +73,8 @@
             roll_number: inputRollNumber,
             major: inputMajor,
             batch: inputBatch,
+			submission: fileContent,
+			submission_time: new Date().toISOString()
         }
 
         const response = await fetch('/api/submit', {
@@ -82,6 +91,27 @@
             
         }
     }
+
+	onMount(() => {
+		if (!user) {
+			goto('/profile');
+		}
+		console.log(user);
+	});
+
+	let fileContent = '';
+	let fileInput;
+
+	async function handleFileUpload(event: any) {
+		const file = event.target.files[0];
+		if (file) {
+			const text = await file.text();
+			fileContent = text;
+			console.log(fileContent);
+		}
+	}
+
+
 </script>
 
 
@@ -106,8 +136,9 @@
 						
 					</p>
 					<input
-						bind:value={inputName}
-						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}
+						value={user?.user_metadata.name}
+						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm disabled:opacity-50`}
+						disabled
 					/>
 				</div>
 				<div class={`flex flex-row items-center gap-2`}>
@@ -119,7 +150,8 @@
 					</p>
 					<input
 						bind:value={inputRollNumber}
-						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}
+						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm disabled:opacity-50`}
+						disabled
 					/>
 				</div>
 
@@ -132,7 +164,8 @@
 					</p>
 					<select
 						bind:value={inputMajor}
-						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}
+						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm disabled:opacity-50`}
+						disabled
 					>
 						{#each majors as major (major.key)}
 							<option value={major.name}>{major.name}</option>
@@ -149,7 +182,8 @@
 					</p>
 					<select
 						bind:value={inputBatch}
-						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}
+						class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm disabled:opacity-50`}
+						disabled
 					>
 						{#each batches as batch (batch.key)}
 							<option value={batch.key}>{batch.name}</option>
@@ -163,7 +197,10 @@
 							<span class={`text-red-600`}>*</span>
 						{/if}
 					</p>
-					<input type="file" />
+					<input type="file" id="algorithm" name="algorithm" accept=".py" class={`md:w-[300px] w-[150px] bg-neutral-900 rounded-lg px-2 py-2 text-sm`}
+						   on:change={handleFileUpload}
+						   bind:this={fileInput}
+					/>
 				</div>
 			</div>
 
@@ -174,6 +211,7 @@
 				>
 					<p
 						class={`ubuntu-bol/d jetbrains-regular text-xl bg-neutral-950 hover:bg-neutral-900 active:bg-neutral-900/95 px-3 py-2 rounded-2xl`}
+						on:click={postFormData}
 					>
 						Submit
 					</p>
