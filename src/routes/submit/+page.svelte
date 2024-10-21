@@ -14,8 +14,8 @@
     }
 
     let userData: IUserData | null = null;
-
     // user inputs;
+	let fileText: string;
     let inputRollNumber: string = '';
     let inputName: string = '';
     let inputMajor: string = '';
@@ -23,6 +23,16 @@
     let validRollNumber: boolean;
     let validMajor: boolean;
     let validBatch: boolean;
+	let files:FileList;
+	
+	const reader = new FileReader()
+	reader.onload = function(){
+		fileText=reader.result?.toString() || "";
+	}
+
+	$: if (files){
+		reader.readAsText(files[0])
+	}
 
 
     const handleSignOut = async () => {
@@ -66,9 +76,10 @@
             roll_number: inputRollNumber,
             major: inputMajor,
             batch: inputBatch,
+			algorithmFile: fileText,
         }
 
-        const response = await fetch('/api/submit', {
+        const response = await fetch('/api/submitalgo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -159,11 +170,8 @@
                 <div class={`flex flex-row items-center gap-2`}>
 					<p class={`md:w-[165ps] w-[130px] md:text-md text-sm`}>
 						--algorithm
-						{#if validBatch === false}
-							<span class={`text-red-600`}>*</span>
-						{/if}
 					</p>
-					<input type="file" />
+					<input type="file" bind:files accept=".py" />
 				</div>
 			</div>
 
