@@ -4,7 +4,7 @@
     import type { Tables } from '$lib/types/supabase'
     import { majors, batches } from '$lib/data/onboardingData';
     import { slide } from 'svelte/transition';
-
+	import {onMount} from 'svelte'
     export let data;
     $: ({ supabase, user } = data)
 
@@ -23,16 +23,28 @@
     let validRollNumber: boolean;
     let validMajor: boolean;
     let validBatch: boolean;
-	let files:FileList;
-	
-	const reader = new FileReader()
-	reader.onload = function(){
-		fileText=reader.result?.toString() || "";
-	}
+	let submitted:boolean = false;
 
-	$: if (files){
-		reader.readAsText(files[0])
-	}
+	function handleFileInput(event: Event) {
+        const input = event.target as HTMLInputElement;
+        const files = input.files;
+        
+        if (files && files.length > 0) {
+            const file = files[0];
+
+            if (file.name.endsWith(".py")) {
+                const reader = new FileReader();
+
+                reader.onload = function() {
+                    fileText = reader.result?.toString() || "";
+                };
+
+                reader.readAsText(file);
+            } else {
+                console.log("Not a Python file");
+            }
+        }
+    }
 
 
     const handleSignOut = async () => {
@@ -50,6 +62,9 @@
 
         if (response.status === 200) {
             userData = json;
+			if (userData?.submission){
+				submitted=true;
+			}
         } else {
             userData = null;
             
@@ -89,7 +104,7 @@
         const json = await response.json();
 
         if (response.status === 201) {
-            userData = json
+            submitted=true;
             
         }
     }
@@ -171,7 +186,7 @@
 					<p class={`md:w-[165ps] w-[130px] md:text-md text-sm`}>
 						--algorithm
 					</p>
-					<input type="file" bind:files accept=".py" />
+					<input type="file" accept=".py" on:change={handleFileInput} />
 				</div>
 			</div>
 
