@@ -10,7 +10,7 @@ export const GET = async ({ url, locals: { supabase } }) => {
         data: userData,
         error: userError,
     } = await supabase
-        .from('user')
+        .from('fixuser')
         .select('*')
         .eq('id', userId)
         .single();
