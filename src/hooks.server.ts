@@ -50,7 +50,7 @@ const comingSoon: Handle = async ({ event, resolve }) => {
     // 
 
     const currentDate = new Date();
-    const targetDate = new Date('2024-10-22T19:15:00'); // 6 PM on 23rd October 2024
+    const targetDate = new Date('2024-10-22T19:15:00');
 
     if (currentDate < targetDate) {
         if (event.url.pathname !== '/') {
