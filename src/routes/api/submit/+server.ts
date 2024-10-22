@@ -31,5 +31,5 @@ export const POST = async ({ request, locals: { supabase } }) => {
         return json({ error: insertError.message }, { status: 500 });
     }
 
-    return json({ user: insertData[0], submissions: [] }, { status: 201 });
+    return json({ user: insertData[0] }, { status: 201 });
 }

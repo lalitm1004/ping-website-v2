@@ -60,6 +60,7 @@
 
     $: if (browser && user) {
         user, getUserData();
+        console.log("user",user)
     }
 
     const postUserData = async () => {
@@ -154,17 +155,34 @@
                         </p>
                     </button>
                 </div>
+
+                <div class="text-sm text-zinc-600">
+                    <div>Not {user.user_metadata.email.split("@")[0]}?</div>
+                    <button on:click={handleSignOut} class="hover:underline hover:text-zinc-300">sign out</button>
+                </div>
+            </div>
+        </div>
+        {:else}
+        <div class="h-screen w-screen grid place-items-center">
+            <div class="bg-black/30 rounded-2xl border border-black/95 pt-8 px-8 pb-4">
+                <div>
+                    Logged in as: {user.user_metadata.full_name}
+                </div>
+                <div>
+                    Net-ID: {user.user_metadata.email.split("@")[0]}
+                </div>
+
+                <button on:click={handleSignOut} class="bg-black py-2 px-4 rounded-lg mt-9">sign out</button>
             </div>
         </div>
     {/if}
 
+
+    
     <!-- Main content -->
-    <div class={`min-h-screen min-w-screen`}>
-        main
-    </div>
+    
 
     <!-- Test button -->
-    <button on:click={handleSignOut} class={`absolute top-0 right-0 z-50`}>signout</button>
     <!-- <button on:click={() => onboard = !onboard} class={`absolute bottom-4 right-0 z-50`}>onboard</button> -->
 {:else}
     <div class={`min-h-screen min-w-screen flex flex-col justify-center items-center`}>

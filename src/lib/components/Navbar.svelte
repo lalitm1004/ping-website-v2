@@ -56,7 +56,7 @@
 
         <div class={`h-[40px] flex gap-2 ubuntu-light text-sm`}>
             <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/profile' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/profile">Profile</a>
-            <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/leaderboards' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/leaderboards">Leaderboards</a>
+            <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/submit' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/submit">Submit</a>
             <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/history' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/history">History</a>
             <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/about' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/about">About</a>
         </div>
