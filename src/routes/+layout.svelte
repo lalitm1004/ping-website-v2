@@ -12,6 +12,14 @@
     export let data;
     $: ({ session, supabase} = data);
 
+
+    let showNavbar = false;
+
+    
+    const checkTime = () => {
+        const targetDate = new Date('2024-10-22T18:55:00'); // 6 PM on 23/10/2024
+        showNavbar = new Date() > targetDate;
+    };
     onMount(() =>    {
         const {
             data
@@ -20,12 +28,24 @@
                 invalidate('supabase:auth');
             }
         })
+        checkTime()
+        let interval:NodeJS.Timeout;
+        if (!showNavbar){
+            interval = setInterval(checkTime, 1000);
+        }
+        
 
-        return () => data.subscription.unsubscribe();
+        return () => {
+            data.subscription.unsubscribe()
+            clearInterval(interval)
+        };
     })
-</script>
 
-<!-- <Navbar /> -->
+    
+</script>
+{#if showNavbar}
+<Navbar />
+{/if}
 <slot />
 <!-- TODO: -->
 <!-- <Footer /> -->
