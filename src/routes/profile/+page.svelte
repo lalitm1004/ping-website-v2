@@ -32,7 +32,7 @@
         await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `${PUBLIC_URL}/profile`,
+                redirectTo: `https://ping-gdsc.vercel.app/profile`,
                 scopes: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid'
             }
         })
@@ -178,9 +178,9 @@
     {/if}
 
 
-    
+
     <!-- Main content -->
-    
+
 
     <!-- Test button -->
     <!-- <button on:click={() => onboard = !onboard} class={`absolute bottom-4 right-0 z-50`}>onboard</button> -->
