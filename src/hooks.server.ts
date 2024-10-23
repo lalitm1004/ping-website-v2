@@ -47,8 +47,15 @@ const supabase: Handle = async ({ event, resolve }) => {
 }
 
 const comingSoon: Handle = async ({ event, resolve }) => {
-    if (event.url.pathname !== '/') {
-        redirect(303, '/');0
+    //
+
+    const currentDate = new Date();
+    const targetDate = new Date('2024-10-23T19:00:00');
+
+    if (currentDate < targetDate) {
+        if (event.url.pathname !== '/') {
+                 redirect(303, '/');
+        }
     }
     return resolve(event);
 }
