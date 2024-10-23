@@ -32,7 +32,7 @@
         await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `https://ping-gdsc.vercel.app/profile`,
+                redirectTo: `https://ping-gdsc.vercel.app/api/auth`,
                 scopes: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid'
             }
         })
