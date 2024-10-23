@@ -44,6 +44,7 @@
 
     const getUserData = async () => {
         if (!user) return;
+        console.log(user)
 
         const response = await fetch(`/api/user?userId=${user.id}`, {
             method: 'GET',
@@ -89,7 +90,8 @@
             body: JSON.stringify(insertUserData),
         })
         const json = await response.json();
-
+        console.log(json)
+        console.log(response)
         if (response.status === 201) {
             userData = json
             onboard = true;
