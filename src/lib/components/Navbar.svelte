@@ -44,9 +44,7 @@
         {#if (isSheetOpen)}
             <div transition:slide class={`w-full flex flex-col justify-center items-center ubuntu-light text-xl mt-10`}>
                 <a class={`h-[50px] ${$page.url.pathname === '/profile' && 'bg-gradient-to-r from-ping-orange-primary to-ping-red bg-clip-text text-transparent ubuntu-bold'}`} href="/profile" on:click={() => isSheetOpen = !isSheetOpen}>Profile</a>
-                <a class={`h-[50px] ${$page.url.pathname === '/leaderboards' && 'bg-gradient-to-r from-ping-orange-primary to-ping-red bg-clip-text text-transparent ubuntu-bold'}`} href="/leaderboards" on:click={() => isSheetOpen = !isSheetOpen}>Leaderboards</a>
-                <a class={`h-[50px] ${$page.url.pathname === '/history' && 'bg-gradient-to-r from-ping-orange-primary to-ping-red bg-clip-text text-transparent ubuntu-bold'}`} href="/history" on:click={() => isSheetOpen = !isSheetOpen}>History</a>
-                <a class={`h-[50px] ${$page.url.pathname === '/about' && 'bg-gradient-to-r from-ping-orange-primary to-ping-red bg-clip-text text-transparent ubuntu-bold'}`} href="/about" on:click={() => isSheetOpen = !isSheetOpen}>About</a>
+                <a class={`h-[50px] ${$page.url.pathname === '/submit' && 'bg-gradient-to-r from-ping-orange-primary to-ping-red bg-clip-text text-transparent ubuntu-bold'}`} href="/leaderboards" on:click={() => isSheetOpen = !isSheetOpen}>Leaderboards</a>
             </div>
         {/if}
     </nav>
@@ -57,8 +55,6 @@
         <div class={`h-[40px] flex gap-2 ubuntu-light text-sm`}>
             <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/profile' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/profile">Profile</a>
             <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/submit' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/submit">Submit</a>
-            <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/history' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/history">History</a>
-            <a class={`h-full px-6 rounded-full grid place-items-center backdrop-blur-sm transition-all duration-300 border-2 ${$page.url.pathname === '/about' ? 'border-neutral-400' : 'border-neutral-800 hover:border-neutral-600'}`} href="/about">About</a>
         </div>
     </nav>
 {/if}

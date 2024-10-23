@@ -47,10 +47,10 @@ const supabase: Handle = async ({ event, resolve }) => {
 }
 
 const comingSoon: Handle = async ({ event, resolve }) => {
-    // 
+    //
 
     const currentDate = new Date();
-    const targetDate = new Date('2024-10-22T19:15:00');
+    const targetDate = new Date('2024-10-23T19:00:00');
 
     if (currentDate < targetDate) {
         if (event.url.pathname !== '/') {

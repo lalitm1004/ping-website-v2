@@ -134,7 +134,7 @@
       await postFormData(); // Call the original submit function
       showModal = false; // Hide the modal after submission
       netiderror = false;
-      isSubmitting = false;  
+      isSubmitting = false;
     } else {
       netiderror = true;
     }
@@ -285,7 +285,7 @@
       class="bg-black p-6 rounded-lg border border-ping-orange-primary jetbrains-regular"
     >
       <h2 class="text-lg font-bold">confirm submission</h2>
-      <p>are you sure you want to submit the form?</p>
+      <p>you can only submit once</p>
       <p class="mb-4">enter your net-id and click confirm</p>
       <input
         type="text"

@@ -15,9 +15,9 @@
 
     let showNavbar = false;
 
-    
+
     const checkTime = () => {
-        const targetDate = new Date('2024-10-22T18:55:00'); // 6 PM on 23/10/2024
+        const targetDate = new Date('2024-10-23T19:00:00'); // 6 PM on 23/10/2024
         showNavbar = new Date() > targetDate;
     };
     onMount(() =>    {
@@ -33,7 +33,7 @@
         if (!showNavbar){
             interval = setInterval(checkTime, 1000);
         }
-        
+
 
         return () => {
             data.subscription.unsubscribe()
@@ -41,7 +41,7 @@
         };
     })
 
-    
+
 </script>
 {#if showNavbar}
 <Navbar />
