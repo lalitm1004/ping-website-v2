@@ -17,7 +17,7 @@
     }
 
     function updateTimer() {
-        const futureDate = new Date('2024-10-23T19:00:00');
+        const futureDate = new Date('2024-10-23T23:00:00');
         const currentDate = new Date();
         const diff = futureDate.getTime() - currentDate.getTime();
 
@@ -49,7 +49,7 @@
         <div class="h-full w-full flex flex-col items-center gap-4 jetbrains-regular md:mt-20 md:pr-[75vh]">
             <StreamText charDelayMs={40} text="@ping" class="md:h-[150px] h-[80px] md:text-9xl text-7xl mt-20 bg-gradient-to-r from-ping-red to-ping-orange-primary bg-clip-text text-transparent"/>
             <StreamText delayMs={200} prevNumChars={5} text="build, have fun." class="md:text-5xl text-3xl tracking-tighter"/>
-            <StreamText delayMs={200} prevNumChars={5} text="starting in" class="mt-4 md:text-3xl text-3xl tracking-tighter"/>
+            <StreamText delayMs={200} prevNumChars={5} text="ends in" class="mt-4 md:text-3xl text-3xl tracking-tighter"/>
             <!--<StreamText delayMs={400} prevNumChars={21} text="Coming Soon" class="md:text-3xl text-2xl"/>-->
 
             <!-- Timer Display -->
